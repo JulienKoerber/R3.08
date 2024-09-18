@@ -1,0 +1,31 @@
+from point import Point
+
+class rectangle:
+    def __init__(self, longueur : float = 1 , largeur : float = 1 , hauteur : float = 1 , pointBasGauche : point = Point() , pointHautDroit : point = None):
+            if pointHautDroit is None:
+                self.__longueur = longueur 
+                self.__hauteur = hauteur
+                self.__pointBasGauche = pointBasGauche
+            else:
+                self.__longueur = pointHautDroit.x - pointBasGauche.x
+                self.__hauteur = pointHautDroit.y - pointBasGauche.y 
+                self.__pointBasGauche = pointBasGauche
+
+    def __str__(self):
+        return f" point bas gauche : x = {self.__pointBasGauche.x} y = {self.__pointBasGauche.y}"
+    
+
+    def surface(self) -> float:
+        try:
+            surface = self.__longueur * self.__hauteur
+            return surface
+        except TypeError:
+            print("La surface n'est pas un réel ou un entier")
+    def perimetre(self) -> float:
+        try:
+            perimetre = (self.__longueur + self.__hauteur) * 2
+            return perimetre
+        except TypeError:
+            print("Le perimetre n'est pas un réel ou un entier")
+
+print (rectangle)
